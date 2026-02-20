@@ -40,25 +40,45 @@ public class Main {
         Scanner scan = new Scanner(System.in);
 
 
-        String opcion = scan.nextLine();
+
         int op = 1;
+        String opcion = "";
 
-        for (Map.Entry<Integer, Ubicacion> x : ubicaciones.entrySet()) {
 
-            if (x.getValue().getId() == op) {
-                System.out.println(x.getValue().getExits());
+
+            while (!opcion.equalsIgnoreCase("Q")) {
+                try {
+                    System.out.println(ubicaciones.get(op).getDescripcion());
+
+                    for (Map.Entry<Integer, Ubicacion> x : ubicaciones.entrySet()) {
+
+                        if (x.getValue().getId() == op) {
+                            System.out.println(x.getValue().getExits());
+
+                            System.out.println("De las que han salido, ¿cuál quieres probar?");
+                            opcion = scan.nextLine();
+
+                            opcion = opcion.toUpperCase();
+
+                            op = x.getValue().getExits().get(opcion);
+                            System.out.println(op);
+                            break;
+                        }
+
+                    }
+
+                } catch (NullPointerException e) {
+                    System.out.println("Esa no es una opción válida, elige de las que salen en pantalla.");
+                }
             }
-            if (x.getValue().getExits().containsValue(opcion)) {
-                System.out.println(x.getValue().getExits());
-            }
-        }
+
+        System.out.println(ubicaciones.get(0).getDescripcion());
 
 
 
 
-        while (!opcion.equals("Q")) {
 
-        }
+
 
 
 
