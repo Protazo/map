@@ -39,12 +39,8 @@ public class Main {
         Map<Integer, Ubicacion> ubicaciones = new Main().ubicaciones;
         Scanner scan = new Scanner(System.in);
 
-
-
         int op = 1;
         String opcion = "";
-
-
 
             while (!opcion.equalsIgnoreCase("Q")) {
                 try {
